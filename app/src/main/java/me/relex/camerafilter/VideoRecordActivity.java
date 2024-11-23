@@ -23,7 +23,7 @@ public class VideoRecordActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_record);
         mCameraSurfaceView = (CameraSurfaceView) findViewById(R.id.camera);
-        mCameraSurfaceView.setAspectRatio(3, 4);
+        mCameraSurfaceView.setAspectRatio(4, 3);
 
         findViewById(R.id.filter_normal).setOnClickListener(this);
         findViewById(R.id.filter_tone_curve).setOnClickListener(this);
@@ -69,7 +69,7 @@ public class VideoRecordActivity extends AppCompatActivity implements View.OnCli
                         CameraRecordRenderer renderer = mCameraSurfaceView.getRenderer();
                         renderer.setEncoderConfig(new EncoderConfig(new File(
                                 FileUtil.getCacheDirectory(VideoRecordActivity.this, true),
-                                "video-" + System.currentTimeMillis() + ".mp4"), 480, 640,
+                                "video-" + System.currentTimeMillis() + ".mp4"), 400,300 ,
                                 1024 * 1024 /* 1 Mb/s */));
                     }
                 });

@@ -29,10 +29,10 @@ public class FileUtil {
     public static File getCacheDirectory(Context context, boolean preferExternal) {
         File appCacheDir = null;
 
-        if (preferExternal && Environment.MEDIA_MOUNTED.equals(
-                Environment.getExternalStorageState())) {
-            appCacheDir = getExternalDirectory(context);
-        }
+//        if (preferExternal && Environment.MEDIA_MOUNTED.equals(
+//                Environment.getExternalStorageState())) {
+//            appCacheDir = getExternalDirectory(context);
+//        }
 
         if (appCacheDir == null) {
             appCacheDir = context.getCacheDir();
