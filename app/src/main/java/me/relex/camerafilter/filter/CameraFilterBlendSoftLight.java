@@ -1,7 +1,9 @@
 package me.relex.camerafilter.filter;
 
 import android.content.Context;
-import android.support.annotation.DrawableRes;
+
+import androidx.annotation.DrawableRes;
+
 import me.relex.camerafilter.R;
 import me.relex.camerafilter.gles.GlUtil;
 

@@ -1,13 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 33
 
+
+    namespace "me.relex.camerafilter"
     defaultConfig {
         applicationId "me.relex.camerafilter"
-        minSdkVersion 18
-        targetSdkVersion 22
+        minSdkVersion 24
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
     }
@@ -20,5 +21,5 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:22.2.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
 }

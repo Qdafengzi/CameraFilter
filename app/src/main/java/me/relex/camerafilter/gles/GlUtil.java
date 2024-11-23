@@ -21,9 +21,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
-import android.support.annotation.Nullable;
-import android.support.annotation.RawRes;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RawRes;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -109,7 +111,7 @@ public class GlUtil {
      * @return 返回创建的 Texture ID
      */
     public static int createTexture(int textureTarget, @Nullable Bitmap bitmap, int minFilter,
-            int magFilter, int wrapS, int wrapT) {
+                                    int magFilter, int wrapS, int wrapT) {
         int[] textureHandle = new int[1];
 
         GLES20.glGenTextures(1, textureHandle, 0);

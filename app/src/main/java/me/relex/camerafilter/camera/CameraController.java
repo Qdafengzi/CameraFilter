@@ -8,7 +8,6 @@ import android.hardware.Camera;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
@@ -115,7 +114,8 @@ public class CameraController
                         (!TextUtils.isEmpty(message) && message.contains("permission"))
                                 ? TYPE_OPEN_CAMERA_ERROR_PERMISSION_DISABLE
                                 : TYPE_OPEN_CAMERA_ERROR_UNKNOWN);
-                LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+//                LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+//                LocalBroadcastManager
             }
 
             if (mCamera == null) {

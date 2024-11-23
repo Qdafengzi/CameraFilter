@@ -1,9 +1,11 @@
 package me.relex.camerafilter;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.File;
 import me.relex.camerafilter.camera.CameraRecordRenderer;
 import me.relex.camerafilter.filter.FilterManager.FilterType;
@@ -51,36 +53,35 @@ public class VideoRecordActivity extends AppCompatActivity implements View.OnCli
     }
 
     @Override public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.filter_normal:
-                mCameraSurfaceView.changeFilter(FilterType.Normal);
-                break;
-            case R.id.filter_tone_curve:
-                mCameraSurfaceView.changeFilter(FilterType.ToneCurve);
-                break;
-            case R.id.filter_soft_light:
-                mCameraSurfaceView.changeFilter(FilterType.SoftLight);
-                break;
-            case R.id.record:
-                if (!mIsRecordEnabled) {
-                    mCameraSurfaceView.queueEvent(new Runnable() {
-                        @Override public void run() {
-                            CameraRecordRenderer renderer = mCameraSurfaceView.getRenderer();
-                            renderer.setEncoderConfig(new EncoderConfig(new File(
-                                    FileUtil.getCacheDirectory(VideoRecordActivity.this, true),
-                                    "video-" + System.currentTimeMillis() + ".mp4"), 480, 640,
-                                    1024 * 1024 /* 1 Mb/s */));
-                        }
-                    });
-                }
-                mIsRecordEnabled = !mIsRecordEnabled;
+        int id = v.getId();
+        if (id == R.id.filter_normal) {
+            mCameraSurfaceView.changeFilter(FilterType.Normal);
+            mCameraSurfaceView.setAspectRatio(1080,1080);
+        } else if (id == R.id.filter_tone_curve) {
+            mCameraSurfaceView.changeFilter(FilterType.ToneCurve);
+        } else if (id == R.id.filter_soft_light) {
+            mCameraSurfaceView.changeFilter(FilterType.SoftLight);
+        } else if (id == R.id.record) {
+            if (!mIsRecordEnabled) {
                 mCameraSurfaceView.queueEvent(new Runnable() {
-                    @Override public void run() {
-                        mCameraSurfaceView.getRenderer().setRecordingEnabled(mIsRecordEnabled);
+                    @Override
+                    public void run() {
+                        CameraRecordRenderer renderer = mCameraSurfaceView.getRenderer();
+                        renderer.setEncoderConfig(new EncoderConfig(new File(
+                                FileUtil.getCacheDirectory(VideoRecordActivity.this, true),
+                                "video-" + System.currentTimeMillis() + ".mp4"), 480, 640,
+                                1024 * 1024 /* 1 Mb/s */));
                     }
                 });
-                updateRecordButton();
-                break;
+            }
+            mIsRecordEnabled = !mIsRecordEnabled;
+            mCameraSurfaceView.queueEvent(new Runnable() {
+                @Override
+                public void run() {
+                    mCameraSurfaceView.getRenderer().setRecordingEnabled(mIsRecordEnabled);
+                }
+            });
+            updateRecordButton();
         }
     }
 

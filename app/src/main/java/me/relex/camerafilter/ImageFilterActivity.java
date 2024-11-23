@@ -5,9 +5,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import me.relex.camerafilter.filter.FilterManager;
 import me.relex.camerafilter.image.ImageEglSurface;
 import me.relex.camerafilter.image.ImageRenderer;
@@ -33,16 +36,13 @@ public class ImageFilterActivity extends AppCompatActivity implements View.OnCli
     }
 
     @Override public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.filter_normal:
-                startFilterTask(FilterManager.FilterType.Normal);
-                break;
-            case R.id.filter_tone_curve:
-                startFilterTask(FilterManager.FilterType.ToneCurve);
-                break;
-            case R.id.filter_soft_light:
-                startFilterTask(FilterManager.FilterType.SoftLight);
-                break;
+        int id = v.getId();
+        if (id == R.id.filter_normal) {
+            startFilterTask(FilterManager.FilterType.Normal);
+        } else if (id == R.id.filter_tone_curve) {
+            startFilterTask(FilterManager.FilterType.ToneCurve);
+        } else if (id == R.id.filter_soft_light) {
+            startFilterTask(FilterManager.FilterType.SoftLight);
         }
     }
 
